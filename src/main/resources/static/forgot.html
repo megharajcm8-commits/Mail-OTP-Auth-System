@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Forgot Password</title>
+</head>
+
+<body>
+
+    <h2>Forgot Password</h2>
+
+    <input type="text" id="username" placeholder="Enter Username"><br><br>
+
+    <button onclick="resetPassword()">Reset Password</button>
+
+    <p id="result"></p>
+
+    <a href="login.html">Back to Login</a>
+
+    <script>
+        function resetPassword() {
+            let username = document.getElementById("username").value;
+
+            fetch(`http://localhost:8080/forgot?username=${username}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("result").innerText = data;
+                });
+        }
+    </script>
+
+</body>
+
+</html>
