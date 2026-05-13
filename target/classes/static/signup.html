@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Signup</title>
+</head>
+
+<body>
+
+    <h2>Signup</h2>
+
+    <input type="text" id="username" placeholder="Enter Username"><br><br>
+    <input type="password" id="password" placeholder="Enter Password"><br><br>
+
+    <button onclick="signup()">Signup</button>
+
+    <p id="result"></p>
+
+    <a href="login.html">Back to Login</a>
+
+    <script>
+        function signup() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            fetch(`http://localhost:8080/signup?username=${username}&password=${password}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("result").innerText = data;
+                });
+        }
+    </script>
+
+</body>
+
+</html>
